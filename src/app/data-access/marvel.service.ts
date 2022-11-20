@@ -14,7 +14,8 @@ export class MarvelService {
     return this.http.get(`http://gateway.marvel.com/v1/public/characters`, {
       params: {
         apikey: publicKey,
-        limit: 100,
+        limit: 10,
+        offset: 0,
       },
     });
   }

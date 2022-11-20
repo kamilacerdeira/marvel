@@ -17,8 +17,24 @@ export class AppComponent {
   getter() {
     this.service.getCharacters().subscribe((payload: any) => {
       this.characters = payload.data.results;
-      console.log('DATA >>', payload);
-      console.log('characters >>', this.characters);
     });
+  }
+
+  characterImageUrl(path: string, extension: string): string {
+    return path + '.' + extension;
+  }
+
+  characterDescription(description: string): string {
+    const descriptionWith100Ch = description.slice(0, 100);
+
+    if (description > descriptionWith100Ch) {
+      return descriptionWith100Ch + '...';
+    }
+
+    if (description === '') {
+      return 'This character does not have a description yet';
+    }
+
+    return descriptionWith100Ch;
   }
 }
