@@ -1,0 +1,47 @@
+.characters-list {
+  padding: 48px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.characters-list_title {
+  font: 500 26px/1.3 Roboto, Trebuchet MS, Helvetica, Arial, sans-serif;
+  letter-spacing: .5px;
+  text-align: center;
+}
+
+.characters-list_card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.character-card {
+  margin: 12px 12px 12px 0;
+  height: 355px;
+  width: 190px;
+  background-color: #151515;
+  color: #ffff;
+
+  img {
+    width: 222px;
+    height: 222px;
+    border-radius: 4px;
+    margin: -16px -16px 0 -16px;
+  }
+}
+
+.character-card_info {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 10px;
+}
+
+.character-card_name {
+  font: 400 16px/1.1 RobotoCondensed Bold, Trebuchet MS, Helvetica, Arial, sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+}

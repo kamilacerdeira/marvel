@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
+import { CharactersListComponent } from './components/characters-list/characters-list.component';
+import { ShellComponent } from './components/shell/shell.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, CharactersListComponent, ShellComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
