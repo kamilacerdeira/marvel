@@ -1,7 +1,7 @@
 <div class="characters-list">
   <span class="characters-list_title">FEATURED CHARACTERS</span>
   <div class="characters-list_card">
-    <mat-card class="character-card" *ngFor="let i of characters">
+    <mat-card class="character-card" *ngFor="let i of characters" routerLink="/character/{{i.id}}">
       <img src="{{characterImageUrl(i.thumbnail.path, i.thumbnail.extension)}}">
       <div class="character-card_info">
         <span class="character-card_name">{{ i.name}}</span>
