@@ -19,4 +19,17 @@ export class MarvelService {
       },
     });
   }
+
+  public getCharacter(characterId: number): Observable<any> {
+    const publicKey = 'fc258a57ea026632af703f5658fb640f';
+
+    return this.http.get(
+      `http://gateway.marvel.com/v1/public/characters/${characterId}`,
+      {
+        params: {
+          apikey: publicKey,
+        },
+      }
+    );
+  }
 }

@@ -8,9 +8,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { CharactersListComponent } from './components/characters-list/characters-list.component';
 import { ShellComponent } from './components/shell/shell.component';
+import { CharacterComponent } from './components/character/character.component';
 
 @NgModule({
-  declarations: [AppComponent, CharactersListComponent, ShellComponent],
+  declarations: [AppComponent, CharactersListComponent, ShellComponent, CharacterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
