@@ -16,6 +16,8 @@ import { CharacterSearchComponent } from './components/character-search/characte
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ContentCardComponent } from './components/content-card/content-card.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ShellComponent,
     CharacterComponent,
     CharacterSearchComponent,
+    ContentCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ReactiveFormsModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    MatTabsModule,
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],

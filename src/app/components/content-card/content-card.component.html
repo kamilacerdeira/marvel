@@ -1,0 +1,9 @@
+<div class="character-comics_content">
+  <span class="character-comics_title">Comics with this character</span>
+  <div class="character-comics_list">
+    <mat-card *ngFor="let i of contentArray" class="character-comics_card">
+      <img alt="comic-image" src="{{comicImageUrl(i.thumbnail?.path, i.thumbnail?.extension )}}">
+      <span class="character-comics_card_subtitle">{{i.title}}</span>
+    </mat-card>
+  </div>
+</div>

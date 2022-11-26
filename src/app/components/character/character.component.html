@@ -6,12 +6,14 @@
   </div>
 </div>
 
-<div class="character-comics">
-  <span class="character-comics_title">QUADRINHOS</span>
-  <div class="character-comics_list">
-    <mat-card class="character-comics_card" *ngFor="let comic of characterComics">
-      <img src="{{comicImageUrl(comic.thumbnail?.path, comic.thumbnail?.extension )}}">
-      <span class="character-comics_card_subtitle">{{comic.title}}</span>
-    </mat-card>
-  </div>
-</div>
+<mat-tab-group animationDuration="500ms" class="character-comics">
+  <mat-tab label="Comics">
+    <app-content-card
+      [contentArray]="characterComics"
+    ></app-content-card>
+  </mat-tab>
+  <mat-tab label="Second">hahahah</mat-tab>
+  <mat-tab label="Third">leelele</mat-tab>
+</mat-tab-group>
+
+

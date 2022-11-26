@@ -46,8 +46,4 @@ export class CharacterComponent implements OnInit {
         console.log(this.characterComics);
       });
   }
-
-  comicImageUrl(path?: string, extension?: string): string {
-    return path + '.' + extension;
-  }
 }
