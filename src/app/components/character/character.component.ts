@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MarvelService } from '../../data-access/marvel.service';
 import { ActivatedRoute } from '@angular/router';
 import { first, map, switchMap } from 'rxjs/operators';
+import { Character, Comic } from '../types';
 
 @Component({
   selector: 'app-character',
@@ -9,8 +10,9 @@ import { first, map, switchMap } from 'rxjs/operators';
   styleUrls: ['./character.component.scss'],
 })
 export class CharacterComponent implements OnInit {
-  characterId: number | null = null;
-  character: any;
+  characterId: number | undefined = undefined;
+  character: Character = {};
+  characterComics: Comic[] = [];
 
   constructor(private service: MarvelService, private route: ActivatedRoute) {}
 
@@ -28,5 +30,24 @@ export class CharacterComponent implements OnInit {
       .subscribe((character) => {
         this.character = character;
       });
+
+    this.route.paramMap
+      .pipe(
+        first(),
+        switchMap((params) => {
+          const characterId = Number(params.get('characterId'));
+          return this.service
+            .getCharacterComics(characterId)
+            .pipe(map((payload) => payload.data.results));
+        })
+      )
+      .subscribe((characterComics) => {
+        this.characterComics = characterComics;
+        console.log(this.characterComics);
+      });
+  }
+
+  comicImageUrl(path?: string, extension?: string): string {
+    return path + '.' + extension;
   }
 }

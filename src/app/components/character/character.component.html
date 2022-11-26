@@ -1,4 +1,5 @@
-<div class="character-header">
+<div class="character-header"
+>
   <div class="character-header_title">
     <span>{{character.name}}</span>
     <p>{{character.description !== '' ? character.description : 'Não há descrição'}}</p>
@@ -6,32 +7,11 @@
 </div>
 
 <div class="character-comics">
-  <span>QUADRINHOS</span>
+  <span class="character-comics_title">QUADRINHOS</span>
   <div class="character-comics_list">
-    <mat-card class="character-comics_card">
-      <span>Nome do quadrinho</span>
-      <!--    imagem do quadrinho-->
-      <img src="/">
-    </mat-card>
-    <mat-card class="character-comics_card">
-      <span>Nome do quadrinho</span>
-      <!--    imagem do quadrinho-->
-      <img src="/">
-    </mat-card>
-    <mat-card class="character-comics_card">
-      <span>Nome do quadrinho</span>
-      <!--    imagem do quadrinho-->
-      <img src="/">
-    </mat-card>
-    <mat-card class="character-comics_card">
-      <span>Nome do quadrinho</span>
-      <!--    imagem do quadrinho-->
-      <img src="/">
-    </mat-card>
-    <mat-card class="character-comics_card">
-      <span>Nome do quadrinho</span>
-      <!--    imagem do quadrinho-->
-      <img src="/">
+    <mat-card class="character-comics_card" *ngFor="let comic of characterComics">
+      <img src="{{comicImageUrl(comic.thumbnail?.path, comic.thumbnail?.extension )}}">
+      <span class="character-comics_card_subtitle">{{comic.title}}</span>
     </mat-card>
   </div>
 </div>
