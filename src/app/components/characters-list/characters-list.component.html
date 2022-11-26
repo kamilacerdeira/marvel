@@ -4,12 +4,21 @@
 ></app-character-search>
 
 <div class="characters-list">
-  <span class="characters-list_title">FEATURED CHARACTERS</span>
+  <span *ngIf="characters.length > 0" class="characters-list_title">FEATURED CHARACTERS</span>
+
   <mat-spinner
     *ngIf="charactersAreLoading"
     [diameter]="50"
     class="characters-list_spinner"
   ></mat-spinner>
+
+  <span
+    *ngIf="showNoCharactersFoundMessage"
+    class="character-list_no-characters-message"
+  >
+    No characters have been found. Please try again.
+  </span>
+  
   <div class="characters-list_card">
     <mat-card *ngFor="let ch of characters" class="character-card">
       <img alt="character-thumbnail" src="{{characterImageUrl(ch.thumbnail?.path, ch.thumbnail?.extension)}}">
@@ -23,7 +32,7 @@
 
   <button
     (click)="loadMoreCharacters()"
-    *ngIf="showLoadMoreButton"
+    *ngIf="showLoadMoreButton && characters.length > 0"
     class="characters-list_load-more-button"
     mat-raised-button>
     <span>Load more</span>

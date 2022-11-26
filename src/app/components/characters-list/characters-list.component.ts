@@ -12,6 +12,7 @@ export class CharactersListComponent {
   characters: Character[] = [];
   offset = 0;
   showLoadMoreButton = true;
+  showNoCharactersFoundMessage = false;
   loadMoreButtonIsLoading = false;
   charactersAreLoading = false;
 
@@ -65,11 +66,18 @@ export class CharactersListComponent {
     this.showLoadMoreButton = false;
     return this.service
       .searchCharacters(searchTerm)
-      .subscribe((payload) => (this.characters = payload.data.results));
+      .pipe(first())
+      .subscribe((payload) => {
+        if (payload.data.results == 0) {
+          this.showNoCharactersFoundMessage = true;
+        }
+        this.characters = payload.data.results;
+      });
   }
 
   resetSearch() {
     this.showLoadMoreButton = true;
+    this.characters = [];
     return this.getCharacters();
   }
 }
