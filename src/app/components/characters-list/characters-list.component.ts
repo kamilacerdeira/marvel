@@ -10,6 +10,9 @@ import { first } from 'rxjs/operators';
 })
 export class CharactersListComponent {
   characters: Character[] = [];
+  offset = 0;
+  showLoadMoreButton = true;
+  loadMoreButtonIsLoading = false;
 
   constructor(private service: MarvelService) {
     this.getCharacters();
@@ -24,12 +27,24 @@ export class CharactersListComponent {
       });
   }
 
+  loadMoreCharacters() {
+    this.offset = this.offset + 20;
+    this.loadMoreButtonIsLoading = true;
+    this.service
+      .getCharacters(this.offset)
+      .pipe(first())
+      .subscribe((payload: any) => {
+        this.characters = this.characters.concat(payload.data.results);
+        this.loadMoreButtonIsLoading = false;
+      });
+  }
+
   characterImageUrl(path?: string, extension?: string): string {
     return path + '.' + extension;
   }
 
   characterDescription(description?: string): string {
-    if (description) {
+    if (description !== undefined) {
       const descriptionWith100Ch = description.slice(0, 100);
 
       if (description > descriptionWith100Ch) {
@@ -44,12 +59,14 @@ export class CharactersListComponent {
   }
 
   searchCharacter(searchTerm: string) {
+    this.showLoadMoreButton = false;
     return this.service
       .searchCharacters(searchTerm)
       .subscribe((payload) => (this.characters = payload.data.results));
   }
 
   resetSearch() {
+    this.showLoadMoreButton = true;
     return this.getCharacters();
   }
 }

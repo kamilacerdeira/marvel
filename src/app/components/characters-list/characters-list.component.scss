@@ -45,3 +45,25 @@
   text-transform: uppercase;
   padding-bottom: 5px;
 }
+
+.characters-list_load-more-button {
+  background-color: #e62429;
+  border: 1px solid #e62429;
+  color: #ffff;
+  margin-top: 16px;
+}
+
+.characters-list_load-more-button ::ng-deep .mat-button-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.characters-list_load-more-button--spinner {
+  display: flex;
+  flex: 0 0 auto;
+  margin-left: 8px;
+}
+
+.characters-list_load-more-button--spinner ::ng-deep circle {
+  stroke: #ffff;
+}

@@ -10,12 +10,12 @@ export class MarvelService {
 
   constructor(private http: HttpClient) {}
 
-  public getCharacters(): Observable<any> {
+  public getCharacters(offset?: number): Observable<any> {
     return this.http.get(`http://gateway.marvel.com/v1/public/characters`, {
       params: {
         apikey: this.publicKey,
-        limit: 10,
-        offset: 0,
+        limit: 20,
+        offset: offset ?? 0,
       },
     });
   }

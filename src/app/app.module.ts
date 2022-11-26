@@ -14,6 +14,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { CharacterSearchComponent } from './components/character-search/character-search.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatIconModule,
     ReactiveFormsModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],
