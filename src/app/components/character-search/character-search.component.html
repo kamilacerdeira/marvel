@@ -1,0 +1,23 @@
+<div class="character-search">
+  <mat-form-field class="character-search_input">
+    <mat-label>Search for a character here</mat-label>
+    <input
+      #searchInput
+      matInput
+      type="text"
+      [formControl]="searchInputControl"
+      (keydown.enter)="searchTermValue(searchInput.value)">
+    <mat-icon
+      class="character-search_icon"
+      (click)="searchTermValue(searchInput.value)"
+      matSuffix
+    >search
+    </mat-icon>
+    <mat-icon
+      class="character-search_icon"
+      (click)="clearSearch()"
+      matSuffix
+    >close
+    </mat-icon>
+  </mat-form-field>
+</div>

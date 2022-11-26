@@ -6,14 +6,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class MarvelService {
+  publicKey = 'fc258a57ea026632af703f5658fb640f';
+
   constructor(private http: HttpClient) {}
 
   public getCharacters(): Observable<any> {
-    const publicKey = 'fc258a57ea026632af703f5658fb640f';
-
     return this.http.get(`http://gateway.marvel.com/v1/public/characters`, {
       params: {
-        apikey: publicKey,
+        apikey: this.publicKey,
         limit: 10,
         offset: 0,
       },
@@ -21,26 +21,35 @@ export class MarvelService {
   }
 
   public getCharacter(characterId: number): Observable<any> {
-    const publicKey = 'fc258a57ea026632af703f5658fb640f';
-
     return this.http.get(
       `http://gateway.marvel.com/v1/public/characters/${characterId}`,
       {
         params: {
-          apikey: publicKey,
+          apikey: this.publicKey,
         },
       }
     );
   }
 
   public getCharacterComics(characterId: number): Observable<any> {
-    const publicKey = 'fc258a57ea026632af703f5658fb640f';
-
     return this.http.get(
       `http://gateway.marvel.com/v1/public/characters/${characterId}/comics`,
       {
         params: {
-          apikey: publicKey,
+          apikey: this.publicKey,
+        },
+      }
+    );
+  }
+
+  public searchCharacters(searchTerm: string): Observable<any> {
+    return this.http.get(
+      `http://gateway.marvel.com/v1/public/characters?nameStartsWith=${searchTerm}`,
+      {
+        params: {
+          apikey: this.publicKey,
+          limit: 100,
+          offset: 0,
         },
       }
     );
