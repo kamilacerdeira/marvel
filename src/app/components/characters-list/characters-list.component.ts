@@ -13,17 +13,20 @@ export class CharactersListComponent {
   offset = 0;
   showLoadMoreButton = true;
   loadMoreButtonIsLoading = false;
+  charactersAreLoading = false;
 
   constructor(private service: MarvelService) {
     this.getCharacters();
   }
 
   getCharacters() {
+    this.charactersAreLoading = true;
     this.service
       .getCharacters()
       .pipe(first())
       .subscribe((payload: any) => {
         this.characters = payload.data.results;
+        this.charactersAreLoading = false;
       });
   }
 
@@ -45,15 +48,15 @@ export class CharactersListComponent {
 
   characterDescription(description?: string): string {
     if (description !== undefined) {
-      const descriptionWith100Ch = description.slice(0, 100);
+      const descriptionWith60Ch = description.slice(0, 60);
 
-      if (description > descriptionWith100Ch) {
-        return descriptionWith100Ch + '...';
+      if (description > descriptionWith60Ch) {
+        return descriptionWith60Ch + '...';
       }
       if (description === '') {
         return 'This character does not have a description yet';
       }
-      return descriptionWith100Ch;
+      return descriptionWith60Ch;
     }
     return 'undefined';
   }

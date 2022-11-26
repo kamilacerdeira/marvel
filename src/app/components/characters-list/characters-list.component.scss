@@ -24,6 +24,9 @@
   width: 190px;
   background-color: #151515;
   color: #ffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   img {
     width: 222px;
@@ -66,4 +69,18 @@
 
 .characters-list_load-more-button--spinner ::ng-deep circle {
   stroke: #ffff;
+}
+
+.character-card_more-info {
+  color: #e62429;
+  padding: 0 16px;
+  cursor: pointer;
+}
+
+.characters-list_spinner {
+  margin: 48px 0;
+}
+
+.characters-list_spinner ::ng-deep circle {
+  stroke: #151515;
 }

@@ -5,13 +5,19 @@
 
 <div class="characters-list">
   <span class="characters-list_title">FEATURED CHARACTERS</span>
+  <mat-spinner
+    *ngIf="charactersAreLoading"
+    [diameter]="50"
+    class="characters-list_spinner"
+  ></mat-spinner>
   <div class="characters-list_card">
-    <mat-card *ngFor="let ch of characters" class="character-card" routerLink="/character/{{ch.id}}">
+    <mat-card *ngFor="let ch of characters" class="character-card">
       <img alt="character-thumbnail" src="{{characterImageUrl(ch.thumbnail?.path, ch.thumbnail?.extension)}}">
       <div class="character-card_info">
         <span class="character-card_name">{{ ch?.name}}</span>
         <span class="character-card_description">{{characterDescription(ch?.description)}}</span>
       </div>
+      <span class="character-card_more-info" routerLink="/character/{{ch.id}}">more info</span>
     </mat-card>
   </div>
 
