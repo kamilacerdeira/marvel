@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MarvelService } from '../../data-access/marvel.service';
 import { ActivatedRoute } from '@angular/router';
 import { first, map, switchMap } from 'rxjs/operators';
-import { Character, Comic, Series } from '../types';
+import { Character, Comic, Series, Stories } from '../types';
 
 @Component({
   selector: 'app-character',
@@ -14,6 +14,7 @@ export class CharacterComponent implements OnInit {
   character: Character = {};
   characterComics: Comic[] = [];
   characterSeries: Series[] = [];
+  characterStories: Stories[] = [];
 
   constructor(private service: MarvelService, private route: ActivatedRoute) {}
 
@@ -44,7 +45,6 @@ export class CharacterComponent implements OnInit {
       )
       .subscribe((characterComics) => {
         this.characterComics = characterComics;
-        console.log(this.characterComics);
       });
 
     this.route.paramMap
@@ -59,7 +59,21 @@ export class CharacterComponent implements OnInit {
       )
       .subscribe((characterSeries) => {
         this.characterSeries = characterSeries;
-        console.log(this.characterSeries);
+      });
+
+    this.route.paramMap
+      .pipe(
+        first(),
+        switchMap((params) => {
+          const characterId = Number(params.get('characterId'));
+          return this.service
+            .getCharacterStories(characterId)
+            .pipe(map((payload) => payload.data.results));
+        })
+      )
+      .subscribe((characterStories) => {
+        this.characterStories = characterStories;
+        console.log(this.characterStories);
       });
   }
 }

@@ -37,10 +37,15 @@
   }
 }
 
-.card_content-subtitle {
+.card_content-title {
   text-align: center;
   padding: 16px;
-  font: 500 16px/1.1 RobotoCondensed Bold, Trebuchet MS, Helvetica, Arial, sans-serif;
+  font: 600 16px/1.1 RobotoCondensed Bold, Trebuchet MS, Helvetica, Arial, sans-serif;
+}
+
+.card_content-description {
+  padding: 0 16px 16px 16px;
+  text-align: justify;
 }
 
 .card_content:last-child {

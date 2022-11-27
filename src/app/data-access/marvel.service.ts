@@ -37,6 +37,7 @@ export class MarvelService {
       {
         params: {
           apikey: this.publicKey,
+          limit: 100,
         },
       }
     );
@@ -48,6 +49,19 @@ export class MarvelService {
       {
         params: {
           apikey: this.publicKey,
+          limit: 100,
+        },
+      }
+    );
+  }
+
+  public getCharacterStories(characterId: number): Observable<any> {
+    return this.http.get(
+      `http://gateway.marvel.com/v1/public/characters/${characterId}/stories`,
+      {
+        params: {
+          apikey: this.publicKey,
+          limit: 100,
         },
       }
     );

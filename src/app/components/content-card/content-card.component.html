@@ -3,7 +3,8 @@
   <div class="card_wrapper">
     <mat-card *ngFor="let i of contentArray" class="card_content">
       <img alt="card-image" src="{{cardImageUrl(i.thumbnail?.path, i.thumbnail?.extension )}}">
-      <span class="card_content-subtitle">{{i.title}}</span>
+      <span class="card_content-title">{{i.title}}</span>
+      <span class="card_content-description">{{i.description ? i.description : 'No description here'}}</span>
     </mat-card>
   </div>
 </div>

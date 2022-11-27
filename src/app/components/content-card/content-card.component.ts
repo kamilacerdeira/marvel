@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Comic } from '../types';
+import { Comic, Series, Stories } from '../types';
 
 @Component({
   selector: 'app-content-card',
@@ -10,7 +10,7 @@ export class ContentCardComponent {
   @Input() isComicsContent = false;
   @Input() isSeriesContent = false;
   @Input() isStoriesContent = false;
-  @Input() contentArray: Comic[] = [];
+  @Input() contentArray: Comic[] | Series[] | Stories[] = [];
 
   constructor() {}
 
@@ -31,6 +31,9 @@ export class ContentCardComponent {
   }
 
   cardImageUrl(path?: string, extension?: string): string {
+    if (!path || !extension) {
+      return 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg';
+    }
     return path + '.' + extension;
   }
 }

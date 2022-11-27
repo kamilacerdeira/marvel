@@ -79,3 +79,18 @@ export interface Series {
   rating?: string;
   thumbnail?: Image;
 }
+
+/**
+ * @prop id The unique ID of the story resource.
+ * @prop title The story title.
+ * @prop description A short description of the story.
+ * @prop type The story type e.g. interior story, cover, text story.
+ * @prop thumbnail The representative image for this story.
+ */
+export interface Stories {
+  id?: number;
+  title?: string;
+  description?: string;
+  type?: string;
+  thumbnail?: Image;
+}
