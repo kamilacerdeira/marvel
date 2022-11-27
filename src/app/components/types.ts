@@ -64,3 +64,18 @@ export interface Comic {
   pageCount?: number;
   thumbnail?: Image;
 }
+
+/**
+ * @prop id The unique ID of the series resource.
+ * @prop title The canonical title of the series.
+ * @prop description A description of the series.
+ * @prop rating The age-appropriateness rating for the series.
+ * @prop thumbnail The representative image for this series.
+ */
+export interface Series {
+  id?: number;
+  title?: string;
+  description?: string;
+  rating?: string;
+  thumbnail?: Image;
+}

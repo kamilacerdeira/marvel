@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MarvelService } from '../../data-access/marvel.service';
 import { ActivatedRoute } from '@angular/router';
 import { first, map, switchMap } from 'rxjs/operators';
-import { Character, Comic } from '../types';
+import { Character, Comic, Series } from '../types';
 
 @Component({
   selector: 'app-character',
@@ -13,6 +13,7 @@ export class CharacterComponent implements OnInit {
   characterId: number | undefined = undefined;
   character: Character = {};
   characterComics: Comic[] = [];
+  characterSeries: Series[] = [];
 
   constructor(private service: MarvelService, private route: ActivatedRoute) {}
 
@@ -44,6 +45,21 @@ export class CharacterComponent implements OnInit {
       .subscribe((characterComics) => {
         this.characterComics = characterComics;
         console.log(this.characterComics);
+      });
+
+    this.route.paramMap
+      .pipe(
+        first(),
+        switchMap((params) => {
+          const characterId = Number(params.get('characterId'));
+          return this.service
+            .getCharacterSeries(characterId)
+            .pipe(map((payload) => payload.data.results));
+        })
+      )
+      .subscribe((characterSeries) => {
+        this.characterSeries = characterSeries;
+        console.log(this.characterSeries);
       });
   }
 }

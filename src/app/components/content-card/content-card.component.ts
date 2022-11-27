@@ -7,12 +7,30 @@ import { Comic } from '../types';
   styleUrls: ['./content-card.component.scss'],
 })
 export class ContentCardComponent {
-  @Input() cardImage = '';
+  @Input() isComicsContent = false;
+  @Input() isSeriesContent = false;
+  @Input() isStoriesContent = false;
   @Input() contentArray: Comic[] = [];
 
   constructor() {}
 
-  comicImageUrl(path?: string, extension?: string): string {
+  get contentCardTitle(): string {
+    if (this.isComicsContent) {
+      return 'Comics with this character';
+    }
+
+    if (this.isSeriesContent) {
+      return 'Series featuring this character';
+    }
+
+    if (this.isStoriesContent) {
+      return 'Stories featuring this character';
+    }
+
+    return '';
+  }
+
+  cardImageUrl(path?: string, extension?: string): string {
     return path + '.' + extension;
   }
 }

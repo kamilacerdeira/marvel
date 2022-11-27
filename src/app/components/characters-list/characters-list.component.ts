@@ -77,6 +77,7 @@ export class CharactersListComponent {
 
   resetSearch() {
     this.showLoadMoreButton = true;
+    this.showNoCharactersFoundMessage = false;
     this.characters = [];
     return this.getCharacters();
   }

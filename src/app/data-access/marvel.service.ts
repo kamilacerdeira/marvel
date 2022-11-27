@@ -42,6 +42,17 @@ export class MarvelService {
     );
   }
 
+  public getCharacterSeries(characterId: number): Observable<any> {
+    return this.http.get(
+      `http://gateway.marvel.com/v1/public/characters/${characterId}/series`,
+      {
+        params: {
+          apikey: this.publicKey,
+        },
+      }
+    );
+  }
+
   public searchCharacters(searchTerm: string): Observable<any> {
     return this.http.get(
       `http://gateway.marvel.com/v1/public/characters?nameStartsWith=${searchTerm}`,

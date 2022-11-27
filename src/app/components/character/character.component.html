@@ -1,19 +1,33 @@
-<div class="character-header"
->
+<div class="character-header">
   <div class="character-header_title">
     <span>{{character.name}}</span>
-    <p>{{character.description !== '' ? character.description : 'Não há descrição'}}</p>
+    <p>
+      {{character.description !== ''
+      ? character.description
+      : 'This character does not have a description yet'}}
+    </p>
   </div>
 </div>
 
-<mat-tab-group animationDuration="500ms" class="character-comics">
+<mat-tab-group animationDuration="500ms" class="character-info" mat-align-tabs="center">
   <mat-tab label="Comics">
     <app-content-card
       [contentArray]="characterComics"
+      [isComicsContent]="true"
     ></app-content-card>
   </mat-tab>
-  <mat-tab label="Second">hahahah</mat-tab>
-  <mat-tab label="Third">leelele</mat-tab>
+  <mat-tab label="Series">
+    <app-content-card
+      [contentArray]="characterSeries"
+      [isSeriesContent]="true"
+    ></app-content-card>
+  </mat-tab>
+  <mat-tab label="Stories">
+    <app-content-card
+      [isStoriesContent]="true"
+    >
+    </app-content-card>
+  </mat-tab>
 </mat-tab-group>
 
 
