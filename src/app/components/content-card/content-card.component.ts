@@ -10,6 +10,7 @@ export class ContentCardComponent {
   @Input() isComicsContent = false;
   @Input() isSeriesContent = false;
   @Input() isStoriesContent = false;
+  @Input() isEventsContent = false;
   @Input() contentArray: Comic[] | Series[] | Stories[] = [];
 
   constructor() {}
@@ -25,6 +26,10 @@ export class ContentCardComponent {
 
     if (this.isStoriesContent) {
       return 'Stories featuring this character';
+    }
+
+    if (this.isEventsContent) {
+      return 'Events featuring this character';
     }
 
     return '';

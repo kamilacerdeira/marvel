@@ -8,9 +8,6 @@ export interface Character {
    * @prop urls A set of public web site URLs for the resource.
    * @prop thumbnail The representative image for this character.
    * @prop comics A resource list containing comics which feature this character.
-   * @prop stories A resource list of stories in which this character appears.
-   * @prop events A resource list of events in which this character appears.
-   * @prop series A resource list of series in which this character appears
    */
   id?: number;
   name?: string;
@@ -19,9 +16,6 @@ export interface Character {
   resourceURI?: string;
   thumbnail?: Image;
   comics?: ComicList;
-  // stories?: StoryList,
-  // events?: EventList,
-  // series?: SeriesList,
 }
 
 /**
@@ -92,5 +86,18 @@ export interface Stories {
   title?: string;
   description?: string;
   type?: string;
+  thumbnail?: Image;
+}
+
+/**
+ * @prop id The unique ID of the event resource.
+ * @prop title The title of the event.
+ * @prop description A description of the event.
+ * @prop thumbnail The representative image for this event.
+ */
+export interface Event {
+  id?: number;
+  title?: string;
+  description?: string;
   thumbnail?: Image;
 }
