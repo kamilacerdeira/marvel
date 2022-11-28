@@ -63,6 +63,7 @@ export class CharactersListComponent {
   }
 
   searchCharacter(searchTerm: string) {
+    this.charactersAreLoading = true;
     this.showLoadMoreButton = false;
     return this.service
       .searchCharacters(searchTerm)
@@ -72,6 +73,7 @@ export class CharactersListComponent {
           this.showNoCharactersFoundMessage = true;
         }
         this.characters = payload.data.results;
+        this.charactersAreLoading = false;
       });
   }
 

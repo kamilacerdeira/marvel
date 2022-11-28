@@ -8,10 +8,12 @@ import { Comic, Series, Stories, Url } from '../types';
 })
 export class ContentCardComponent {
   noDetailsLink = false;
+
   @Input() isComicsContent = false;
   @Input() isSeriesContent = false;
   @Input() isStoriesContent = false;
   @Input() isEventsContent = false;
+  @Input() contentIsLoading = false;
   @Input() contentArray: Comic[] | Series[] | Stories[] = [];
 
   constructor() {}
@@ -49,5 +51,20 @@ export class ContentCardComponent {
     }
     const detailUrl = urls?.find((url) => url.type === 'detail');
     return detailUrl?.url;
+  }
+
+  cardDescription(description?: string): string {
+    if (description !== undefined) {
+      const descriptionWith100Ch = description?.slice(0, 100);
+
+      if (description > descriptionWith100Ch) {
+        return descriptionWith100Ch + '...';
+      }
+      if (description === '' || description === null) {
+        return 'No description here';
+      }
+      return descriptionWith100Ch;
+    }
+    return 'undefined';
   }
 }

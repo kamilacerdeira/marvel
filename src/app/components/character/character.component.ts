@@ -10,6 +10,7 @@ import { Character, Comic, Event, Series, Stories } from '../types';
   styleUrls: ['./character.component.scss'],
 })
 export class CharacterComponent implements OnInit {
+  characterInfoIsLoading = false;
   characterId: number | undefined = undefined;
   character: Character = {};
   characterComics: Comic[] = [];
@@ -20,6 +21,16 @@ export class CharacterComponent implements OnInit {
   constructor(private service: MarvelService, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.getCharacter();
+    this.getCharacterComics();
+    this.getCharacterSeries();
+    this.getCharacterStories();
+    this.getCharacterEvents();
+  }
+
+  getCharacter() {
+    this.characterInfoIsLoading = true;
+
     this.route.paramMap
       .pipe(
         first(),
@@ -32,8 +43,11 @@ export class CharacterComponent implements OnInit {
       )
       .subscribe((character) => {
         this.character = character;
+        this.characterInfoIsLoading = false;
       });
+  }
 
+  getCharacterComics() {
     this.route.paramMap
       .pipe(
         first(),
@@ -46,7 +60,12 @@ export class CharacterComponent implements OnInit {
       )
       .subscribe((characterComics) => {
         this.characterComics = characterComics;
+        this.characterInfoIsLoading = false;
       });
+  }
+
+  getCharacterSeries() {
+    this.characterInfoIsLoading = true;
 
     this.route.paramMap
       .pipe(
@@ -60,7 +79,12 @@ export class CharacterComponent implements OnInit {
       )
       .subscribe((characterSeries) => {
         this.characterSeries = characterSeries;
+        this.characterInfoIsLoading = false;
       });
+  }
+
+  getCharacterStories() {
+    this.characterInfoIsLoading = true;
 
     this.route.paramMap
       .pipe(
@@ -74,8 +98,12 @@ export class CharacterComponent implements OnInit {
       )
       .subscribe((characterStories) => {
         this.characterStories = characterStories;
-        console.log(this.characterStories);
+        this.characterInfoIsLoading = false;
       });
+  }
+
+  getCharacterEvents() {
+    this.characterInfoIsLoading = true;
 
     this.route.paramMap
       .pipe(
@@ -89,7 +117,7 @@ export class CharacterComponent implements OnInit {
       )
       .subscribe((characterEvents) => {
         this.characterEvents = characterEvents;
-        console.log(this.characterEvents);
+        this.characterInfoIsLoading = false;
       });
   }
 }

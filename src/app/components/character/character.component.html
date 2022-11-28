@@ -13,18 +13,21 @@
   <mat-tab label="Comics">
     <app-content-card
       [contentArray]="characterComics"
+      [contentIsLoading]="characterInfoIsLoading"
       [isComicsContent]="true"
     ></app-content-card>
   </mat-tab>
   <mat-tab label="Series">
     <app-content-card
       [contentArray]="characterSeries"
+      [contentIsLoading]="characterInfoIsLoading"
       [isSeriesContent]="true"
     ></app-content-card>
   </mat-tab>
   <mat-tab label="Stories">
     <app-content-card
       [contentArray]="characterStories"
+      [contentIsLoading]="characterInfoIsLoading"
       [isStoriesContent]="true"
     >
     </app-content-card>
@@ -32,6 +35,7 @@
   <mat-tab label="Events">
     <app-content-card
       [contentArray]="characterEvents"
+      [contentIsLoading]="characterInfoIsLoading"
       [isEventsContent]="true"
     >
     </app-content-card>
