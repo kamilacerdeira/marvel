@@ -5,6 +5,8 @@
       <img alt="card-image" src="{{cardImageUrl(i.thumbnail?.path, i.thumbnail?.extension )}}">
       <span class="card_content-title">{{i.title}}</span>
       <span class="card_content-description">{{i.description ? i.description : 'No description here'}}</span>
+      <a *ngIf="!noDetailsLink" [href]="cardLink(i.urls)" class="card_content-link" target="_blank">more details</a>
+      <span></span>
     </mat-card>
   </div>
 </div>

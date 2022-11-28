@@ -48,6 +48,7 @@ export interface ComicList {
  * @prop pageCount The number of story pages in the comic.
  * @prop series A summary representation of the series to which this comic belongs.
  * @prop thumbnail The representative image for this comic.
+ * @prop urls A set of public website URLs for the resource.
  */
 export interface Comic {
   id?: number;
@@ -57,6 +58,7 @@ export interface Comic {
   format?: string;
   pageCount?: number;
   thumbnail?: Image;
+  urls?: Url[];
 }
 
 /**
@@ -65,6 +67,7 @@ export interface Comic {
  * @prop description A description of the series.
  * @prop rating The age-appropriateness rating for the series.
  * @prop thumbnail The representative image for this series.
+ * @prop urls A set of public website URLs for the resource.
  */
 export interface Series {
   id?: number;
@@ -72,6 +75,7 @@ export interface Series {
   description?: string;
   rating?: string;
   thumbnail?: Image;
+  urls?: Url[];
 }
 
 /**
@@ -80,6 +84,7 @@ export interface Series {
  * @prop description A short description of the story.
  * @prop type The story type e.g. interior story, cover, text story.
  * @prop thumbnail The representative image for this story.
+ * @prop urls A set of public website URLs for the resource.
  */
 export interface Stories {
   id?: number;
@@ -87,6 +92,7 @@ export interface Stories {
   description?: string;
   type?: string;
   thumbnail?: Image;
+  urls?: Url[];
 }
 
 /**
@@ -94,10 +100,21 @@ export interface Stories {
  * @prop title The title of the event.
  * @prop description A description of the event.
  * @prop thumbnail The representative image for this event.
+ * @prop urls A set of public website URLs for the resource.
  */
 export interface Event {
   id?: number;
   title?: string;
   description?: string;
   thumbnail?: Image;
+  urls?: Url[];
+}
+
+/**
+ * @prop type A text identifier for the URL.
+ * @prop url A full URL (including scheme, domain, and path).
+ */
+export interface Url {
+  type?: string;
+  url?: string;
 }

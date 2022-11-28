@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Comic, Series, Stories } from '../types';
+import { Comic, Series, Stories, Url } from '../types';
 
 @Component({
   selector: 'app-content-card',
@@ -7,6 +7,7 @@ import { Comic, Series, Stories } from '../types';
   styleUrls: ['./content-card.component.scss'],
 })
 export class ContentCardComponent {
+  noDetailsLink = false;
   @Input() isComicsContent = false;
   @Input() isSeriesContent = false;
   @Input() isStoriesContent = false;
@@ -40,5 +41,13 @@ export class ContentCardComponent {
       return 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg';
     }
     return path + '.' + extension;
+  }
+
+  cardLink(urls?: Url[]): string | undefined {
+    if (!urls || urls.length === 0) {
+      this.noDetailsLink = true;
+    }
+    const detailUrl = urls?.find((url) => url.type === 'detail');
+    return detailUrl?.url;
   }
 }
