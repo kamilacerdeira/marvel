@@ -8,7 +8,7 @@
 
 .characters-list_title {
   font: 500 26px/1.3 Roboto, Trebuchet MS, Helvetica, Arial, sans-serif;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
   text-align: center;
 }
 
@@ -43,7 +43,8 @@
 }
 
 .character-card_name {
-  font: 400 16px/1.1 RobotoCondensed Bold, Trebuchet MS, Helvetica, Arial, sans-serif;
+  font: 400 16px/1.1 RobotoCondensed Bold, Trebuchet MS, Helvetica, Arial,
+    sans-serif;
   letter-spacing: 1px;
   text-transform: uppercase;
   padding-bottom: 5px;

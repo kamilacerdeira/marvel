@@ -11,15 +11,31 @@
     class="card-content_spinner"
   ></mat-spinner>
 </div>
+
 <div *ngIf="contentArray.length !== 0 && !contentIsLoading" class="card">
-  <span class="card_title">{{contentCardTitle}}</span>
+  <span class="card_title">{{ contentCardTitle }}</span>
   <div class="card_wrapper">
     <mat-card *ngFor="let i of contentArray" class="card_content">
-      <img alt="card-image" src="{{cardImageUrl(i.thumbnail?.path, i.thumbnail?.extension )}}">
-      <div [class.card_content-info--no-link]="noDetailsLink" class="card_content-info">
-        <span class="card_content-title">{{i.title}}</span>
-        <span class="card_content-description">{{cardDescription(i.description)}}</span>
-        <a *ngIf="!noDetailsLink" [href]="cardLink(i.urls)" class="card_content-link" target="_blank">more details</a>
+      <img
+        alt="card-image"
+        src="{{ cardImageUrl(i.thumbnail?.path, i.thumbnail?.extension) }}"
+      />
+      <div
+        [class.card_content-info--no-link]="noDetailsLink"
+        class="card_content-info"
+      >
+        <span class="card_content-title">{{ i.title }}</span>
+        <span class="card_content-description">{{
+          cardDescription(i.description)
+        }}</span>
+        <a
+          *ngIf="!noDetailsLink"
+          [href]="cardLink(i.urls)"
+          class="card_content-link"
+          target="_blank"
+        >
+          more details
+        </a>
       </div>
     </mat-card>
   </div>

@@ -48,6 +48,8 @@ export class CharacterComponent implements OnInit {
   }
 
   getCharacterComics() {
+    this.characterInfoIsLoading = true;
+
     this.route.paramMap
       .pipe(
         first(),
